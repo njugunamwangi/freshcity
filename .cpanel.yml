@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/xttmglkq/public_html/freshcity
+    - /bin/cp -R * $DEPLOYPATH
