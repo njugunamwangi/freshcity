@@ -5,20 +5,6 @@
         ussd_proceed($text);
     }
 
-    // check whether the user exists
-    function check_if_phone_is_registered($phone_number) {
-        global $connection;
-        $phone = $connection->query("SELECT * FROM users WHERE phone_number=$phone_number") or die($connection->error);
-
-        $exists = mysqli_num_rows($phone);
-
-        if ($exists > 0) {
-            $text = "Your phone number $phone_number is already registered";
-            ussd_stop($text);
-        }
-
-    }
-
     // register an account
     function register_account($data) {
         global $connection;
@@ -58,7 +44,7 @@
         }
 
         if (count($data) == 9) {
-            $phone_number = $_GET['phone_number'];
+            $phone_number = $_GET['phoneNumber'];
             $first_name = ucfirst($data[2]);
             $last_name = ucfirst($data[3]);
             $sur_name = ucfirst($data[4]);
