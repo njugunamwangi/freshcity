@@ -17,7 +17,7 @@
 
     echo $level, ' ';
 
-    if ($level == 0 || $level == 1) {
+    if ($level == 1) {
         main_menu();
     }
 
@@ -29,23 +29,28 @@
                 break;
 
             case 2:
-                add_product();
+//                add_product();
+                echo "Welcome to $data[1]";
                 break;
 
             case 3:
-                purchase_product();
+//                purchase_product();
+                echo "Welcome to $data[1]";
                 break;
 
             case 4:
-                generate_report();
+//                generate_report();
+                echo "Welcome to $data[1]";
                 break;
 
             case 5:
-                tips_and_updates();
+//                tips_and_updates();
+                echo "Welcome to $data[1]";
                 break;
 
             case 6:
-                update_personal_info();
+//                update_personal_info();
+                echo "Welcome to $data[1]";
                 break;
 
             default:
