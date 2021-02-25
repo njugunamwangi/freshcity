@@ -7,12 +7,12 @@
 //    $session_id = $_POST['sessionId'];
 //    $service_code = $_POST['serviceCode'];
 
-    $phone_number = $_GET['phone_number'];
+    $phone_number = $_GET['phoneNumber'];
     $text = $_GET['text'];
 
     $data = explode('*', $text);
 
-    $level = 0;
+    $level = 1;
     $level = count($data);
 
     echo $level, ' ';
@@ -29,27 +29,32 @@
 
             case 2:
 //                add_product();
-                echo "Welcome to menu option $data[1]";
+                $text = "Welcome to menu option $data[1]";
+                ussd_stop($text);
                 break;
 
             case 3:
 //                purchase_product();
-                echo "Welcome to menu option $data[1]";
+                $text = "Welcome to menu option $data[1]";
+                ussd_stop($text);
                 break;
 
             case 4:
 //                generate_report();
-                echo "Welcome to menu option $data[1]";
+                $text = "Welcome to menu option $data[1]";
+                ussd_stop($text);
                 break;
 
             case 5:
 //                tips_and_updates();
-                echo "Welcome to menu option $data[1]";
+                $text = "Welcome to menu option $data[1]";
+                ussd_stop($text);
                 break;
 
             case 6:
 //                update_personal_info();
-                echo "Welcome to menu option $data[1]";
+                $text = "Welcome to menu option $data[1]";
+                ussd_stop($text);
                 break;
 
             default:
