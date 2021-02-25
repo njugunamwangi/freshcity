@@ -30,27 +30,27 @@
 
             case 2:
 //                add_product();
-                echo "Welcome to $data[1]";
+                echo "Welcome to menu option $data[1]";
                 break;
 
             case 3:
 //                purchase_product();
-                echo "Welcome to $data[1]";
+                echo "Welcome to menu option $data[1]";
                 break;
 
             case 4:
 //                generate_report();
-                echo "Welcome to $data[1]";
+                echo "Welcome to menu option $data[1]";
                 break;
 
             case 5:
 //                tips_and_updates();
-                echo "Welcome to $data[1]";
+                echo "Welcome to menu option $data[1]";
                 break;
 
             case 6:
 //                update_personal_info();
-                echo "Welcome to $data[1]";
+                echo "Welcome to menu option $data[1]";
                 break;
 
             default:
