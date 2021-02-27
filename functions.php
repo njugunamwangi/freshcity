@@ -67,12 +67,22 @@
             $email = $data[7];
             $password = md5($data[8]);
 
-            $sql = $connection->query("INSERT INTO users (first_name, last_name, sur_name, phone_number, id_number, gender, email, password, register_date) 
-                                                VALUES ('$first_name', '$last_name', '$sur_name', '$phone_number', '$id_number', '$gender', '$email', '$password', now())") or die($connection->error);
+            // check whether email or id number are already registered
+            $records = $connection->query("SELECT * FROM users WHERE email='$email' || id_number='$id_number'") or die($connection->error);
 
-            if ($sql) {
-                $text = "Thank you for registering";
+            $records_check = mysqli_num_rows($records);
+
+            if ($records_check > 0) {
+                $text = "Your email address, $email, and/or ID Number, $id_number, are already registered";
                 ussd_stop($text);
+            } else {
+                $sql = $connection->query("INSERT INTO users (first_name, last_name, sur_name, phone_number, id_number, gender, email, password, register_date) 
+                                                    VALUES ('$first_name', '$last_name', '$sur_name', '$phone_number', '$id_number', '$gender', '$email', '$password', now())") or die($connection->error);
+
+                if ($sql == 1) {
+                    $text = "Thank you for registering $email";
+                    ussd_stop($text);
+                }
             }
         }
     }
