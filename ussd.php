@@ -19,6 +19,7 @@
     if ($level > 1) {
         switch ($data[1]) {
             case 1:
+                check_if_phone_is_registered($phone_number);
                 register_account($data, $phone_number);
                 break;
 
