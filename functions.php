@@ -5,6 +5,20 @@
         ussd_proceed($text);
     }
 
+    // check if phone number is registered
+    function check_if_phone_is_registered($phone_number) {
+        global $connection;
+
+        $sql = $connection->query("SELECT * FROM users WHERE phone_number='$phone_number'") or die($connection->error);
+
+        $check = mysqli_num_rows($sql);
+
+        if ($check > 0) {
+            $text = "Your phone number, $phone_number, is already registered";
+            ussd_stop($text);
+        }
+    }
+
     // register an account
     function register_account($data) {
         global $connection;
