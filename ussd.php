@@ -29,27 +29,23 @@
                 break;
 
             case 3:
-//                purchase_product();
-                $text = "Welcome to menu option $data[1]";
-                ussd_stop($text);
+                check_password($data, $phone_number);
+                purchase_product($data, $phone_number);
                 break;
 
             case 4:
-//                generate_report();
-                $text = "Welcome to menu option $data[1]";
-                ussd_stop($text);
+                check_password($data, $phone_number);
+                generate_report($data, $phone_number);
                 break;
 
             case 5:
-//                tips_and_updates();
-                $text = "Welcome to menu option $data[1]";
-                ussd_stop($text);
+                check_password($data, $phone_number);
+                tips_and_updates($data, $phone_number);
                 break;
 
             case 6:
-//                update_personal_info();
-                $text = "Welcome to menu option $data[1]";
-                ussd_stop($text);
+                check_password($data, $phone_number);
+                update_personal_info($data, $phone_number) ;
                 break;
 
             default:
