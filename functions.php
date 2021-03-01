@@ -112,6 +112,31 @@
         }
     }
 
+    // check id number to update password
+    function check_id_number($data, $id_number) {
+        global $connection;
+        if (count($data) == 2) {
+            $text = "Please enter your ID Number to continue";
+            ussd_proceed($text);
+        }
+
+        if (count($data) == 3) {
+            $phone_number = $_GET['phoneNumber'];
+            $id_number = $data[2];
+
+            $sql = $connection->query("SELECT * FROM users WHERE phone_number='$phone_number' && id_number='$id_number'") or die($connection->error);
+
+            $check = mysqli_num_rows($sql);
+
+            if ($check > 0) {
+                return true;
+            } else {
+                $text = "Please check your ID Number and try again";
+                ussd_stop($text);
+            }
+        }
+    }
+
     // add product
     function add_product($data, $phone_number) {
         if (count($data) == 3) {
