@@ -106,7 +106,7 @@
             if ($check > 0) {
                 return true;
             } else {
-                $text = "Please check your password";
+                $text = "Please check your password and try again";
                 ussd_stop($text);
             }
         }
