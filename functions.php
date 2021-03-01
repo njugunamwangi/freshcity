@@ -1,7 +1,7 @@
 <?php
 
     function main_menu() {
-        $text = "Welcome to Fresh City, Please reply with\n1. Register an account\n2. Add a product\n3. Purchase a product\n4. Generate Report\n5. Tips and Updates\n6. Update your personal information";
+        $text = "Welcome to Fresh City, Please reply with\n1. Register an account\n2. Add a product\n3. Purchase a product\n4. Generate Report\n5. Tips and Updates\n6. Update your personal information\n7. Update password";
         ussd_proceed($text);
     }
 
