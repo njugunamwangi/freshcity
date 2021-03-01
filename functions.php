@@ -73,7 +73,7 @@
             $records_check = mysqli_num_rows($records);
 
             if ($records_check > 0) {
-                $text = "Your email address, $email, and/or ID Number, $id_number, are already registered";
+                $text = "Your email address, $email, (and/or) ID Number, $id_number, are already registered";
                 ussd_stop($text);
             } else {
                 $sql = $connection->query("INSERT INTO users (first_name, last_name, sur_name, phone_number, id_number, gender, email, password, register_date) 
@@ -84,6 +84,39 @@
                     ussd_stop($text);
                 }
             }
+        }
+    }
+
+    // check password
+    function check_password($data, $password) {
+        global $connection;
+        if (count($data) == 2) {
+            $text = "Enter your password to continue";
+            ussd_proceed($text);
+        }
+
+        if (count($data) == 3) {
+            $phone = $_GET['phoneNumber'];
+            $password = md5($data[2]);
+
+            $sql = $connection->query("SELECT * FROM users WHERE phone_number='$phone' && password='$password'") or die($connection->error);
+
+            $check = mysqli_num_rows($sql);
+
+            if ($check > 0) {
+                return true;
+            } else {
+                $text = "Please check your password";
+                ussd_stop($text);
+            }
+        }
+    }
+
+    // add product
+    function add_product($data, $phone_number) {
+        if (count($data) == 3) {
+            $text = "Add your product here";
+            ussd_stop($text);
         }
     }
 
