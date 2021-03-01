@@ -120,6 +120,38 @@
         }
     }
 
+    // purchase product
+    function purchase_product($data, $phone_number) {
+        if (count($data) == 3) {
+            $text = "Purchase a product here";
+            ussd_stop($text);
+        }
+    }
+
+    // generate report
+    function generate_report($data, $phone_number) {
+        if (count($data) == 3) {
+            $text = "Generate a report here";
+            ussd_stop($text);
+        }
+    }
+
+    // tips and updates
+    function tips_and_updates($data, $phone_number) {
+        if (count($data) == 3) {
+            $text = "Get tips and updates here";
+            ussd_stop($text);
+        }
+    }
+
+    // update personal info
+    function update_personal_info($data, $phone_number) {
+        if (count($data) == 3) {
+            $text = "Update personal information here";
+            ussd_stop($text);
+        }
+    }
+
     function ussd_proceed($text) {
         echo "CON ".$text;
     }
