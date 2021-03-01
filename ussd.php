@@ -48,6 +48,11 @@
                 update_personal_info($data, $phone_number) ;
                 break;
 
+            case 7:
+                check_id_number($data, $phone_number);
+                update_password($data, $phone_number);
+                break;
+
             default:
                 $text = "Invalid menu option, Please insert a valid menu option";
                 ussd_stop($text);

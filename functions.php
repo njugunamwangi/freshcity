@@ -177,6 +177,34 @@
         }
     }
 
+    // update password
+    function update_password($data, $phone_number) {
+        global $connection;
+        if (count($data) == 3) {
+            $text = "Enter your new 4 digit password";
+            ussd_proceed($text);
+        }
+
+        if (count($data) == 4) {
+            $password = md5($data[3]);
+            $phone_number = $_GET['phoneNumber'];
+
+            $old_password = (array)$connection->query("SELECT * FROM users WHERE phone_number='$phone_number'")->fetch_assoc() or die($connection->error);
+
+            if ($password == $old_password['password']) {
+                $text = "Your old and new password cannot be the same";
+                ussd_stop($text);
+            } else {
+                $sql = $connection->query("UPDATE users SET password='$password' WHERE phone_number='$phone_number'") or die($connection->error);
+
+                if ($sql == 1) {
+                    $text = "You successfully updated your password";
+                    ussd_stop($text);
+                }
+            }
+        }
+    }
+
     function ussd_proceed($text) {
         echo "CON ".$text;
     }
