@@ -24,9 +24,8 @@
                 break;
 
             case 2:
-//                add_product();
-                $text = "Welcome to menu option $data[1]";
-                ussd_stop($text);
+                check_password($data, $phone_number);
+                add_product($data, $phone_number);
                 break;
 
             case 3:
